@@ -2,7 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, connectFirestoreEmulator, query, limit } from 'firebase/firestore';
 import { collection as collection$ } from 'rxfire/firestore';
 import { config } from './config';
-import { fromEvent, map, mergeMap, startWith } from 'rxjs';
+import { fromEvent, map, switchMap, startWith } from 'rxjs';
 
 type User = { id: string; first_name: string, last_name: string }
 
@@ -36,10 +36,9 @@ const createUsersFrag = usersQuery => collection$(usersQuery).pipe(
 
 change$.pipe(
   startWith('10'),
-  mergeMap(recordNumber => {
+  switchMap(recordNumber => {
     const number = parseInt(recordNumber, 10);
-    const obs$ = createUsersFrag(query(usersCol, limit(number)));
-    return obs$;
+    return createUsersFrag(query(usersCol, limit(number)));
   })
 ).subscribe(frag => {
   userList.innerHTML = '';
