@@ -1,0 +1,26 @@
+{
+  "name": "load-moar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently npm:vite npm:emulators",
+    "vite": "vite",
+    "emulators": "firebase emulators:start --only firestore --import=./seed --export-on-exit",
+    "admin:emulator": "export FIRESTORE_EMULATOR_HOST=\"localhost:8080\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^7.1.0",
+    "firebase-admin": "^10.2.0",
+    "firebase-tools": "^10.9.2",
+    "vite": "^2.9.9"
+  },
+  "dependencies": {
+    "firebase": "^9.8.1",
+    "rxfire": "^6.0.3",
+    "rxjs": "^7.5.5"
+  }
+}
