@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "concurrently npm:vite npm:emulators",
     "vite": "vite",
-    "emulators": "firebase emulators:start --only firestore --import=./seed --export-on-exit",
-    "admin:emulator": "export FIRESTORE_EMULATOR_HOST=\"localhost:8080\""
+    "emulators": "firebase emulators:start --only firestore,auth"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +15,8 @@
     "concurrently": "^7.1.0",
     "firebase-admin": "^10.2.0",
     "firebase-tools": "^10.9.2",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.4",
     "vite": "^2.9.9"
   },
   "dependencies": {

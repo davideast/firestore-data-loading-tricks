@@ -23,6 +23,19 @@
     },
     "ui": {
       "enabled": true
+    },
+    "auth": {
+      "host": "127.0.0.1",
+      "port": 9099
+    },
+    "functions": {
+      "port": 5001
+    },
+    "hosting": {
+      "port": 5055
+    },
+    "storage": {
+      "port": 9199
     }
   }
 }

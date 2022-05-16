@@ -1,0 +1,103 @@
+{
+  "housing": [
+    "mortgage",
+    "rent"
+  ],
+  "transportation": [
+    "auto",
+    "registration",
+    "gas"
+  ],
+  "taxes": [
+    "federal income",
+    "state",
+    "property",
+    "business",
+    "accountant fees",
+    "filing fees"
+  ],
+  "food": [
+    "groceries",
+    "restaurants",
+    "coffee"
+  ],
+  "kids": [
+    "childcare",
+    "toys",
+    "allowance"
+  ],
+  "healthcare": [
+    "copays",
+    "prescriptions"
+  ],
+  "insurance": [
+    "medical",
+    "dental",
+    "vision",
+    "home",
+    "renters",
+    "pet",
+    "auto",
+    "life",
+    "disability",
+    "long-term care"
+  ],
+  "utilities": [
+    "electric",
+    "gas",
+    "phone",
+    "cable",
+    "internet",
+    "water",
+    "sewer",
+    "trash",
+    "recycling",
+    "yard waste"
+  ],
+  "personal": [
+    "haircuts",
+    "acupuncture"
+  ],
+  "pets": [
+    "food",
+    "veterinary",
+    "medications",
+    "bedding",
+    "toys",
+    "daycare"
+  ],
+  "clothes": [
+    "new clothes",
+    "school clothes",
+    "professional clothes",
+    "uniform",
+    "dry cleaning"
+  ],
+  "home": [
+    "cleaning supplies",
+    "general household supplies",
+    "office products",
+    "furniture",
+    "tools"
+  ],
+  "gifts": [
+    "holiday",
+    "birthday",
+    "wedding"
+  ],
+  "fun": [
+    "going out",
+    "events",
+    "travel",
+    "hobbies",
+    "books",
+    "new technology"
+  ],
+  "services": [
+    "yard care",
+    "gym",
+    "magazines",
+    "music",
+    "streaming"
+  ]
+}
