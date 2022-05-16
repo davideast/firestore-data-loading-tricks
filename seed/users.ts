@@ -1,9 +1,8 @@
-import { createUsers } from './admin'
+import { createUsers, usersCol, deleteAllAuthUsers, getAllUsers } from './admin'
 import { convertMockarooData } from './util'
+import { batchUp, commitBatches } from './batch';
 import type { MockUser } from './types'
-import { request } from 'http'
 const userData = require('./data/users.json');
-const serviceAccount = require('./sa.json');
 
 export async function seedUsers() {
   const mockUsers = convertMockarooData<MockUser>(userData, (user) => {
@@ -15,21 +14,26 @@ export async function seedUsers() {
   return createUsers(mockUsers)
 }
 
-export async function deleteAllUsers() {
-  return new Promise((resolve, reject) => {
-    request(
-      `http://localhost:9099/emulator/v1/projects/${serviceAccount.project_id}/accounts`,
-      { method: 'DELETE' },
-      (res) => {
-        let chunks: any[] = []
-        res.on('data', chunk => {
-          chunks = [...chunks, chunk];
-        });
-        res.on('end', () => {
-          const message = Buffer.concat(chunks).toString();
-          resolve(message);
-        })
-      },
-    )
+export async function seedUsersForFirestore() {
+  const createdUsers = await seedUsers();
+  const batches = batchUp({ 
+    colRef: usersCol, 
+    indexKey: 'uid',
+    arrayData: createdUsers,
   });
+  await commitBatches(batches);
+  return createdUsers;
 }
+
+export async function deleteAllUsersForFirestore() {
+  const refList = await usersCol.listDocuments()
+  const deletePromises = refList.map(ref => ref.delete());
+  return Promise.all(deletePromises);
+}
+
+export async function deleteAllUsers() {
+  await deleteAllUsersForFirestore();
+  await deleteAllAuthUsers();
+}
+
+export { getAllUsers };
