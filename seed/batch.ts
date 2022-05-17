@@ -15,7 +15,7 @@ export function batchUp<T>(config: BatchConfig): WriteBatch[] {
   let { indexKey, colRef, arrayData, count, currentBatchIndex, batches } = config;
   const BATCH_SIZE = 500;
   const BATCH_LIMIT = (BATCH_SIZE * currentBatchIndex) + BATCH_SIZE;
-  while(count < BATCH_LIMIT) {
+  while(count < BATCH_LIMIT && count <= arrayData.length - 1) {
     const record = arrayData[count];
     const indexKeyValue: string = indexKey != null ? record[indexKey] : colRef.doc().id;
     if(batches[currentBatchIndex] == null) {

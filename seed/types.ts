@@ -17,4 +17,6 @@ export type MockExpense = {
 
 export interface CreatedExpense extends MockExpense {
   uid: string;
+  date: Date;
+  categories: string[];
 }

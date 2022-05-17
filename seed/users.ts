@@ -2,7 +2,7 @@ import { createUsers, usersCol, deleteAllAuthUsers, getAllUsers } from './admin'
 import { convertMockarooData } from './util'
 import { batchUp, commitBatches } from './batch';
 import type { MockUser } from './types'
-const userData = require('./data/users.json');
+const userData = require('./data/users-sm.json');
 
 export async function seedUsers() {
   const mockUsers = convertMockarooData<MockUser>(userData, (user) => {
